@@ -4,7 +4,7 @@ package nl.hu;
  * Hello world!
  *
  */
-public class App 
+public class KafkaConsumer
 {
     public static void main( String[] args )
     {
