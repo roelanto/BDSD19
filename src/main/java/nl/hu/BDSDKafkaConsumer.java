@@ -58,7 +58,7 @@ public class BDSDKafkaConsumer extends Thread {
                 ConsumerRecords<String, String> records = consumer.poll(100);
                 for (ConsumerRecord<String, String> record : records)
                 {
-                    log.debug("topic = %s, partition = %d, offset = %d, customer = %s, country = %s\n",
+                    log.info("topic = %s, partition = %d, offset = %d, customer = %s, country = %s\n",
                             record.topic(), record.partition(), record.offset(),
                             record.key(), record.value());
                     System.out.println("topic = " + record.topic()  + " partition = "+record.partition() +", offset = "+ record.offset()+ ", customer = "+record.key()+", country = " + record.value()+ "\n");
