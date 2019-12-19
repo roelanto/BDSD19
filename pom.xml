@@ -86,7 +86,7 @@
               <manifest>
                 <addClasspath>true</addClasspath>
                 <classpathPrefix>${project.build.finalName}.lib/</classpathPrefix>
-                <mainClass>nl.hu.KafkaConsumer</mainClass>
+                <mainClass>nl.hu.BDSDKafkaConsumerRunner</mainClass>
               </manifest>
             </archive>
           </configuration>
@@ -103,7 +103,7 @@
             </execution>
           </executions>
           <configuration>
-            <mainClass>nl.hu.KafkaConsumer</mainClass>
+            <mainClass>nl.hu.BDSDKafkaConsumerRunner</mainClass>
           </configuration>
         </plugin>
         <plugin>
