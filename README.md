@@ -140,5 +140,5 @@ Je kunt eenvoudig de SQL-data exporteren in dit formaat (`select klant_idklant,p
 
 In deze oplossing wordt iedere aankoop los gezien. De meesten van jullie hebben in de SQL-queries eerst een soort primary gemaakt (klant - aankoopdatum - supermarkt). De Java-code kun je daarvoor zelf aanpassen. 
 
-Let op: deze producer maakt in het geheugen structuren aan (zie de class `Transactions`) om het resultaat van de query te berekenen. In het echt schaalt dit natuurlijk niet, en zou je daar een andere Kafka-topic of een andere persistentie-oplossing voor gebruiken. 
+Let op: deze consumer maakt in het geheugen structuren aan (zie de class `Transactions`) om het resultaat van de query te berekenen. In het echt schaalt dit natuurlijk niet, en zou je daar een andere Kafka-topic of een andere persistentie-oplossing voor gebruiken. 
 
