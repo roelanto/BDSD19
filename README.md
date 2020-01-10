@@ -136,7 +136,13 @@ De producer vraagt vervolgens om een key-value pair: `[klant]:[product id]`. Voo
 >
 ```
 
-Je kunt eenvoudig de SQL-data exporteren in dit formaat (`select klant_idklant,product_idproduct INTO OUTFILE "output2"  FIELDS TERMINATED BY ":" from aankoop ; `) en die vervolgens als input gebruiken voor de console-producer. Beter is het natuurlijk om een aparte Kafka-producer te schrijven die kan verbinden met de SQL-server. Voor de eerste query heb je alleen een product-id en customer-id nodig.
+Je kunt eenvoudig de SQL-data exporteren in dit formaat (`select klant_idklant,product_idproduct INTO OUTFILE "output2"  FIELDS TERMINATED BY ":" from aankoop ; `) en die vervolgens als input gebruiken voor de console-producer:
+
+```
+(base) RAOs-Mac:kafka_2.12-2.4.0 roelant$ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic transactie --property "parse.key=true" --property "key.separator=:" < /tmp/output2
+```
+
+Beter is het natuurlijk om een aparte Kafka-producer te schrijven die kan verbinden met de SQL-server. Voor de eerste query heb je alleen een product-id en customer-id nodig.
 
 In deze oplossing wordt iedere aankoop los gezien. De meesten van jullie hebben in de SQL-queries eerst een soort primary gemaakt (klant - aankoopdatum - supermarkt). De Java-code kun je daarvoor zelf aanpassen. 
 
