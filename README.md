@@ -122,7 +122,7 @@ Als alles goed is, zie je vervolgens de output van de consumer:
 2019-12-19 16:06:54 INFO  ConsumerCoordinator - [Consumer clientId=BDSDKafkaProducer, groupId=mygroup] Adding newly assigned partitions: 
 ```
 
-De consumer luistert naar topic `transactie`. Om die topic te vullen vanuit de voorbeeld-MySQL-database, kun je de standaard console-producer gebruiken:
+De consumer luistert naar topic `transactie`. Om dat topic te vullen vanuit de voorbeeld-MySQL-database, kun je de standaard console-producer gebruiken:
 
 `bin/kafka-console-producer.sh --broker-list localhost:9092 --topic transactie --property "parse.key=true" --property "key.separator=: /tmp/output.large`
 
@@ -135,6 +135,10 @@ De producer vraagt vervolgens om een key-value pair: `[klant]:[product id]`. Voo
 >3:5
 >
 ```
+
+Je kunt eenvoudig de SQL-data exporteren in dit formaat (`select klant_idklant,product_idproduct INTO OUTFILE "output2"  FIELDS TERMINATED BY ":" from aankoop ; `) en die vervolgens als input gebruiken voor de console-producer. Beter is het natuurlijk om een aparte Kafka-producer te schrijven die kan verbinden met de SQL-server. Voor de eerste query heb je alleen een product-id en customer-id nodig.
+
+In deze oplossing wordt iedere aankoop los gezien. De meesten van jullie hebben in de SQL-queries eerst een soort primary gemaakt (klant - aankoopdatum - supermarkt). De Java-code kun je daarvoor zelf aanpassen. 
 
 Let op: deze producer maakt in het geheugen structuren aan (zie de class `Transactions`) om het resultaat van de query te berekenen. In het echt schaalt dit natuurlijk niet, en zou je daar een andere Kafka-topic of een andere persistentie-oplossing voor gebruiken. 
 
